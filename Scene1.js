@@ -29,7 +29,7 @@ class Scene1 extends Phaser.Scene{
 		
 		this.add.image(770,640,'rue');
 
-		this.route = this.physics.add.staticImage(200,1190,'route'); 
+		this.route = this.physics.add.staticImage(1000,1300,'route'); 
 
 	//cursors//
 		this.cursors = this.input.keyboard.createCursorKeys();
@@ -40,19 +40,18 @@ class Scene1 extends Phaser.Scene{
 		this.player.direction = 'right';
 		//this.player.setCollideWorldBounds(true);
 		this.physics.add.collider(this.player,this.route);
-		this.player.setVelocityX(600);
-		this.player.anims.play('right', true);
+		
 
 
 	// Camera scrolling 
 
 		this.cameras.main.startFollow(this.player);
-		this.cameras.main.setBounds(0, 0, 2000, 600);
+		this.cameras.main.setBounds(0, 0, 5000, 600);
 
 		this.anims.create({
 			    key: 'right',
 			    frames: this.anims.generateFrameNumbers('mayu', { start: 0, end: 1}),
-			    frameRate: 4,
+			    frameRate: 12,
 			    repeat: -1
 			});
 
@@ -99,7 +98,11 @@ class Scene1 extends Phaser.Scene{
 	}
 
 	update(){
-
+		if (this.player.x < 2000) {
+			this.player.setVelocityX(300);
+			this.player.anims.play('right', true);
+		}
+			
 		// Deplacement du perso// 
 
 			if(this.cursors.up.isDown && this.player.body.touching.down){
