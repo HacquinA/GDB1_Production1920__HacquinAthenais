@@ -4,12 +4,6 @@ class Scene1 extends Phaser.Scene{
 	}
 
 	init(){
-		
-		var player;
-		var route;
-		var mayu;
-		var obstacles;
-		
 
 	}
 
@@ -21,6 +15,8 @@ class Scene1 extends Phaser.Scene{
 		this.load.image('lanterne_petite','Assets/lanterne_petite.png');
 		this.load.image('lanterne_grande','Assets/lanterne_grande.png');
 		this.load.image('pont','Assets/pont.png');
+		this.load.image('Saiya','Assets/Saiya.png');
+
 
 
 	}
@@ -46,6 +42,13 @@ class Scene1 extends Phaser.Scene{
 		this.player = this.physics.add.sprite(100,1100,'mayu').setOffset(0,0);
 		this.player.direction = 'right';
 		this.physics.add.collider(this.player,this.route);
+
+	//Saiya
+
+
+		this.Saiya = this.physics.add.sprite(4400,500,'Saiya');
+		this.physics.add.collider(this.Saiya,this.route);
+		this.physics.add.overlap(this.Saiya,this.player);
 
 
 	// obstacles 
@@ -128,7 +131,11 @@ class Scene1 extends Phaser.Scene{
 	            
 	            function hitL (obstacles, player){
 	            	this.player.x=300;
-	            }		
+	            }	
+
+
+	    
+	
 	}
 
 	update(){
