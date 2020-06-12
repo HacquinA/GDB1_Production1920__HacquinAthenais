@@ -14,15 +14,13 @@ class Scene0 extends Phaser.Scene{
 		//clique souris 
 
 			this.input.on('pointerdown', function (pointer){
-				this.scene.start('Scene1');
+				this.scene.start('Scene_1');
 
 			}, this);
 		
 	}
 
 	update(){
-		/*if (this.cursors.up.isDown) {
-			this.scene.start('Scene_2',{nombreVie: this.nombreVie, score: this.score});
-		}*/
+		
 	}
 }
