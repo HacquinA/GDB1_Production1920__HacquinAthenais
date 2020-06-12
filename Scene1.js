@@ -14,12 +14,14 @@ class Scene1 extends Phaser.Scene{
 	}
 
 	preload(){
-		this.load.spritesheet('mayu','Assets/Mayu_sprite.png',{frameWidth: 240.4, frameHeight: 174});
-		this.load.image('glissade','Assets/Mayu_spriteglissade.png');
+		this.load.spritesheet('mayu','Assets/Mayu_sprite.png',{frameWidth: 220.4, frameHeight: 174});
+		this.load.spritesheet('glissade','Assets/Mayu_spriteglissade.png',{frameWidth: 245, frameHeight: 174});
 		this.load.image('rue','Assets/rue.png');
 		this.load.image('route','Assets/platforme.png');
 		this.load.image('lanterne_petite','Assets/lanterne_petite.png');
 		this.load.image('lanterne_grande','Assets/lanterne_grande.png');
+		this.load.image('pont','Assets/pont.png');
+
 
 	}
 
@@ -41,18 +43,21 @@ class Scene1 extends Phaser.Scene{
 
 	// Mayu
 
-		this.player = this.physics.add.sprite(100,1100,'mayu');
+		this.player = this.physics.add.sprite(100,1100,'mayu').setOffset(0,0);
 		this.player.direction = 'right';
 		this.physics.add.collider(this.player,this.route);
+
 
 	// obstacles 
 
 		this.obstacles = this.physics.add.staticGroup(); 
 	        this.obstacles.create(600,1200,'lanterne_petite');
 	        this.obstacles.create(1200,1150,'lanterne_grande');
+	        this.obstacles.create(1950,1150,'pont').setSize(40,20,true);
 
-	        this.physics.add.collider(this.obstacles,this.player);
-		
+	        this.physics.add.overlap(this.player,this.obstacles ,hitL,null,this);
+
+			
 
 
 	// Camera scrolling 
@@ -60,9 +65,9 @@ class Scene1 extends Phaser.Scene{
 		this.cameras.main.startFollow(this.player);
 		this.cameras.main.setBounds(0, 0, 5000, 600);
 
-		/*this.anims.create({
+		this.anims.create({
 			    key: 'right',
-			    frames: this.anims.generateFrameNumbers('mayu', { start: 0, end: 1}),
+			    frames: this.anims.generateFrameNumbers('glissade', { start: 0, end: 1}),
 			    frameRate: 12,
 			    repeat: -1
 			});
@@ -86,7 +91,7 @@ class Scene1 extends Phaser.Scene{
 			frames: this.anims.generateFrameNumbers('glissade', { start: 0, end: 2}),
 			frameRate: 4,
 			repeat: -1
-		});*/
+		});
 
 
 	
@@ -114,13 +119,17 @@ class Scene1 extends Phaser.Scene{
 	            this.gameTimer.paused = false;
 
 	            this.cursors = this.input.keyboard.createCursorKeys();*/
-		
+	            
+	            function hitL (obstacles, player){
+	            	this.player.x=300;
+	            }		
 	}
 
 	update(){
 		if (this.player.x < 2000) {
+			this.player.setSize(50, 174, true);
 			this.player.setVelocityX(300);
-			//this.player.anims.play('right', true);
+			this.player.anims.play('right', true);
 		}
 			
 		// Deplacement du perso// 
@@ -132,6 +141,7 @@ class Scene1 extends Phaser.Scene{
 
         if (this.cursors.up.isUp){
             this.nsaut = 1;
+
         }
 
         if (this.nsaut == 1 && this.saut > 0 && this.cursors.up.isDown)
@@ -140,14 +150,14 @@ class Scene1 extends Phaser.Scene{
             this.nsaut = 0;
             if (this.saut == 1) 
             {    
-                //player.anims.play('jump', true);
-                this.player.setVelocityY(-1000);
+                this.player.anims.play('jump', true);
+                this.player.setVelocityY(-500);
             }
 
             if (this.saut== 0) 
             {
-                this.player.setVelocityY(-260);
-                //player.anims.play('jump', true);
+                this.player.setVelocityY(-450);
+                this.player.anims.play('jump', true);
             }
         }
 
@@ -161,10 +171,25 @@ class Scene1 extends Phaser.Scene{
 			   // this.player.anims.play('glissade', true);
 			    this.player.setSize(110, 52, true);
 			    this.player.direction = 'right';
-			}
-			else if (this.cursors.down.isUp) {
-				this.player.setSize(240.4,174,true);
-				this.player.y = 1100;
+			    this.player.y=1210;
+
+			    this.time.addEvent({
+	                delay: 600,
+	                callback: function() {
+	                	this.player.y=1150;
+	                	if(this.player.x<700 & this.player.x>300){
+	                		this.player.x=410;
+	                	}
+	                	if(this.player.x<1400 & this.player.x>900){
+	                		this.player.x=710;
+	                	}
+						this.player.setSize(50, 174, true);
+	                },
+	                callbackScope: this
+	            });
+	            						
+
+			    
 			}
 
 
