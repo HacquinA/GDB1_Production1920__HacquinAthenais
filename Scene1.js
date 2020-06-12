@@ -53,7 +53,13 @@ class Scene1 extends Phaser.Scene{
 		this.obstacles = this.physics.add.staticGroup(); 
 	        this.obstacles.create(600,1200,'lanterne_petite');
 	        this.obstacles.create(1200,1150,'lanterne_grande');
-	        this.obstacles.create(1950,1150,'pont').setSize(40,20,true);
+	        this.obstacles.create(1850,1150,'pont').setSize(40,20,true);
+	        this.obstacles.create(2300,1150,'pont').setSize(40,20,true);
+	        this.obstacles.create(3000,1150,'lanterne_grande');
+	        this.obstacles.create(3600,1200,'lanterne_petite');
+	        this.obstacles.create(4100,1150,'pont').setSize(40,20,true);
+
+
 
 	        this.physics.add.overlap(this.player,this.obstacles ,hitL,null,this);
 
@@ -174,7 +180,7 @@ class Scene1 extends Phaser.Scene{
 			    this.player.y=1210;
 
 			    this.time.addEvent({
-	                delay: 600,
+	                delay: 800,
 	                callback: function() {
 	                	this.player.y=1150;
 	                	if(this.player.x<700 & this.player.x>300){
