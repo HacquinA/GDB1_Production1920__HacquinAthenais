@@ -8,15 +8,19 @@ class Scene1 extends Phaser.Scene{
 		var player;
 		var route;
 		var mayu;
-		
+		var obstacles;
 		
 
 	}
 
 	preload(){
-		this.load.spritesheet('mayu','Assets/Mayu_sprite.png',{frameWidth: 140, frameHeight: 174});
+		this.load.spritesheet('mayu','Assets/Mayu_sprite.png',{frameWidth: 240.4, frameHeight: 174});
+		this.load.image('glissade','Assets/Mayu_spriteglissade.png');
 		this.load.image('rue','Assets/rue.png');
 		this.load.image('route','Assets/platforme.png');
+		this.load.image('lanterne_petite','Assets/lanterne_petite.png');
+		this.load.image('lanterne_grande','Assets/lanterne_grande.png');
+
 	}
 
 	create(){
@@ -27,19 +31,27 @@ class Scene1 extends Phaser.Scene{
 		
 	//Monde
 		
-		this.add.image(770,640,'rue');
+		this.add.image(2500,640,'rue');
 
-		this.route = this.physics.add.staticImage(1000,1300,'route'); 
+		this.route = this.physics.add.staticImage(2500,1300,'route'); 
+
 
 	//cursors//
 		this.cursors = this.input.keyboard.createCursorKeys();
 
 	// Mayu
 
-		this.player = this.physics.add.sprite(100,980,'mayu');
+		this.player = this.physics.add.sprite(100,1100,'mayu');
 		this.player.direction = 'right';
-		//this.player.setCollideWorldBounds(true);
 		this.physics.add.collider(this.player,this.route);
+
+	// obstacles 
+
+		this.obstacles = this.physics.add.staticGroup(); 
+	        this.obstacles.create(600,1200,'lanterne_petite');
+	        this.obstacles.create(1200,1150,'lanterne_grande');
+
+	        this.physics.add.collider(this.obstacles,this.player);
 		
 
 
@@ -48,7 +60,7 @@ class Scene1 extends Phaser.Scene{
 		this.cameras.main.startFollow(this.player);
 		this.cameras.main.setBounds(0, 0, 5000, 600);
 
-		this.anims.create({
+		/*this.anims.create({
 			    key: 'right',
 			    frames: this.anims.generateFrameNumbers('mayu', { start: 0, end: 1}),
 			    frameRate: 12,
@@ -57,19 +69,27 @@ class Scene1 extends Phaser.Scene{
 
 		this.anims.create({
 			key: 'saut',
-			frames: this.anims.generateFrameNumbers('mayu', { start: 2, end: 2}),
+			frames: this.anims.generateFrameNumbers('mayu', { start: 1, end: 2}),
 			frameRate: 4,
 			repeat: -1
 		});
 		
 		this.anims.create({
 			key: 'double_saut',
-			frames: this.anims.generateFrameNumbers('mayu', { start: 3, end: 3}),
+			frames: this.anims.generateFrameNumbers('mayu', { start: 2, end: 3}),
 			frameRate: 4,
 			repeat: -1
 		});
 
+		this.anims.create({
+			key: 'glissade',
+			frames: this.anims.generateFrameNumbers('glissade', { start: 0, end: 2}),
+			frameRate: 4,
+			repeat: -1
+		});*/
 
+
+	
 	/*	//timebar//
 		let gameOptions = { initialTime: 650 }
 	            this.timeLeft = gameOptions.initialTime;
@@ -100,38 +120,52 @@ class Scene1 extends Phaser.Scene{
 	update(){
 		if (this.player.x < 2000) {
 			this.player.setVelocityX(300);
-			this.player.anims.play('right', true);
+			//this.player.anims.play('right', true);
 		}
 			
 		// Deplacement du perso// 
 
-			if(this.cursors.up.isDown && this.player.body.touching.down){
-				this.saut = 2;
+		if (this.player.body.touching.down && this.cursors.up.isDown)
+        {
+            this.saut= 2;
+        }
+
+        if (this.cursors.up.isUp){
+            this.nsaut = 1;
+        }
+
+        if (this.nsaut == 1 && this.saut > 0 && this.cursors.up.isDown)
+        {
+            this.saut--;
+            this.nsaut = 0;
+            if (this.saut == 1) 
+            {    
+                //player.anims.play('jump', true);
+                this.player.setVelocityY(-1000);
+            }
+
+            if (this.saut== 0) 
+            {
+                this.player.setVelocityY(-260);
+                //player.anims.play('jump', true);
+            }
+        }
+
+			// glissade 
+
+				
+
+			if (this.cursors.down.isDown) {
+			    //this.player.setVelocityY(200);
+			    //this.player.anims.play('saut', false);
+			   // this.player.anims.play('glissade', true);
+			    this.player.setSize(110, 52, true);
+			    this.player.direction = 'right';
 			}
-
-			if ((this.nSaut==1) && this.saut>0 && this.cursors.up.isDown){
-				this.saut --;
-				this.nSaut=0;
-
-				if (this.saut == 1) {
-				this.player.setVelocityY(-250);
-
-				if (this.player.body.velocity.y<0) {
-
-					}
-				}
-
-				if (this.saut == 0) {
-				this.player.setVelocityY(-250);
-				if (this.player.body.velocity.y<0) {
-				}}
+			else if (this.cursors.down.isUp) {
+				this.player.setSize(240.4,174,true);
+				this.player.y = 1100;
 			}
-
-			if (this.cursors.up.isUp) {
-				this.nSaut=1;
-			}
-
-
 
 
 
