@@ -76,7 +76,7 @@ class Scene3 extends Phaser.Scene{
 
 	// base 4
 
-		this.base4 = this.physics.add.sprite(390,700,'base4').setGravityY(-600).setScale(0.5).setVisible(false);
+		this.base4 = this.physics.add.sprite(390,657,'base4').setGravityY(-600).setScale(0.7).setVisible(false);
 
 
 	// Click objet 1
