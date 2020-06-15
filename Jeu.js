@@ -2,7 +2,7 @@
     type: Phaser.AUTO,
     width: 720,
     height: 1280,
-    scene: [Scene0,Transition,Scene1,Scene2,GameOver],
+    scene: [Scene0,Transition,Scene2, Scene1,GameOver],
     physics: {
         default: 'arcade',
         arcade: {
