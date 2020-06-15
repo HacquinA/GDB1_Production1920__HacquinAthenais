@@ -3,8 +3,8 @@ class Scene1 extends Phaser.Scene{
 		super("Scene_1");
 	}
 
-	init(){
-
+	init(data){
+		this.vie = data.vie;
 	}
 
 	preload(){
@@ -16,6 +16,11 @@ class Scene1 extends Phaser.Scene{
 		this.load.image('lanterne_grande','Assets/lanterne_grande.png');
 		this.load.image('pont','Assets/pont.png');
 		this.load.image('Saiya','Assets/Saiya.png');
+		this.load.image('vie','Assets/Mayu.png');
+		this.load.image('timebar','Assets/timebar.png');
+		this.load.image('gameover','Assets/gameover.png');
+
+
 
 
 
@@ -23,6 +28,7 @@ class Scene1 extends Phaser.Scene{
 
 	create(){
 		
+
 	//saut//
 		this.saut = 2;
 		this.nsaut = 1;
@@ -33,6 +39,25 @@ class Scene1 extends Phaser.Scene{
 
 		this.route = this.physics.add.staticImage(2500,1300,'route'); 
 
+	// vie 
+		
+		
+
+		if(this.vie >= 3){
+			this.vie1 = this.add.image(320,100,'vie').setScrollFactor(0);
+			this.vie2 = this.add.image(200,100,'vie').setScrollFactor(0);
+			this.vie3 = this.add.image(80,100,'vie').setScrollFactor(0);
+		}
+
+		if(this.vie >= 2){
+			this.vie2 = this.add.image(200,100,'vie').setScrollFactor(0);
+			this.vie3 = this.add.image(80,100,'vie').setScrollFactor(0);
+		}
+
+		if(this.vie >= 1){
+			this.vie3 = this.add.image(80,100,'vie').setScrollFactor(0);
+		}
+
 
 	//cursors//
 		this.cursors = this.input.keyboard.createCursorKeys();
@@ -41,12 +66,13 @@ class Scene1 extends Phaser.Scene{
 
 		this.player = this.physics.add.sprite(100,1100,'mayu').setOffset(0,0);
 		this.player.direction = 'right';
+		this.player.setVelocityX(400);
 		this.physics.add.collider(this.player,this.route);
 
 	//Saiya
 
 
-		this.Saiya = this.physics.add.sprite(4400,500,'Saiya');
+		this.Saiya = this.physics.add.sprite(4500,500,'Saiya');
 		this.physics.add.collider(this.Saiya,this.route);
 		this.physics.add.overlap(this.Saiya,this.player);
 
@@ -54,12 +80,12 @@ class Scene1 extends Phaser.Scene{
 	// obstacles 
 
 		this.obstacles = this.physics.add.staticGroup(); 
-	        this.obstacles.create(600,1200,'lanterne_petite');
+	        //this.obstacles.create(600,1200,'lanterne_petite');
 	        this.obstacles.create(1200,1150,'lanterne_grande');
-	        this.obstacles.create(1850,1150,'pont').setSize(40,20,true);
+	        //this.obstacles.create(1850,1150,'pont').setSize(40,20,true);
 	        this.obstacles.create(2300,1150,'pont').setSize(40,20,true);
-	        this.obstacles.create(3000,1150,'lanterne_grande');
-	        this.obstacles.create(3600,1200,'lanterne_petite');
+	        this.obstacles.create(3500,1150,'lanterne_grande');
+	        //this.obstacles.create(3600,1200,'lanterne_petite');
 	        this.obstacles.create(4100,1150,'pont').setSize(40,20,true);
 
 
@@ -102,14 +128,12 @@ class Scene1 extends Phaser.Scene{
 			repeat: -1
 		});
 
-
-	
-	/*	//timebar//
-		let gameOptions = { initialTime: 650 }
+		//timebar//
+		let gameOptions = { initialTime: 800 }
 	            this.timeLeft = gameOptions.initialTime;
-	            let timebar = this.add.sprite(0, 0, "timebar").setOrigin(0,0);
+	            let timebar = this.add.sprite(0, 0, "timebar").setOrigin(0,0).setScrollFactor(0);
 
-	            this.energyMask = this.add.sprite(timebar.x, timebar.y, "timebar").setOrigin(0,0);
+	            this.energyMask = this.add.sprite(timebar.x, timebar.y, "timebar").setOrigin(0,0).setScrollFactor(0);
 
 	            this.energyMask.visible = false;
 	     
@@ -121,27 +145,69 @@ class Scene1 extends Phaser.Scene{
 	                    this.timeLeft --;
 	                    let stepWidth = this.energyMask.displayWidth / gameOptions.initialTime;
 	                    this.energyMask.x -= stepWidth;
+
+	                    if(this.timeLeft == 0) {
+	                    	this.vie--;
+	                    	//sthis.gameTimer.paused = true;
+	                    	//this.timedEvent = this.time.delayedCall(5000, changeLevel, [], this);
+	                    	
+	                    	//this.text = this.add.text(50, 300, "Temps écoulé ! \nTu vas être téléporté \nà l'ecran titre. \ntu peux recommencer mais \navec une vie en moins !", {'font': '40px', fill: '#fff'}).setScrollFactor(0);
+	                    //this.player.setVelocityX(0);
+
+	                    // vie 
+							if(this.vie == 2){
+						        this.vie3.destroy(true);
+						        this.scene.start('Transition',{vie:this.vie});
+						        console.log(this.vie)
+
+						    }
+						    if(this.vie == 1){
+						        this.vie2.destroy(true);
+						        this.scene.start('Transition',{vie:this.vie});
+							}
+						    if(this.vie == 0){
+						        this.vie1.destroy(true);
+						        this.text = this.add.text(50, 300, " Game over !", {'font': '40px', fill: '#fff'}).setScrollFactor(0);
+						        this.scene.start('Transition',{vie:this.vie});
+						    }
+	                    }
 	                },
 	                callbackScope: this,
 	                loop: true
 	            });
 	            this.gameTimer.paused = false;
 
-	            this.cursors = this.input.keyboard.createCursorKeys();*/
+	            this.cursors = this.input.keyboard.createCursorKeys();
+
+
 	            
-	            function hitL (obstacles, player){
+	           
+	        // fonction hit obstacles 
+
+	           function hitL (obstacles, player){
 	            	this.player.x=300;
 	            }	
 
 
-	    
+	// door et chgt de scene
+		this.physics.add.overlap(this.player, this.Saiya, maFonction, null, this);
+
+
+		function maFonction(){
+			this.scene.start('Scene_2');
+			
+		}
 	
+		function changeLevel(){
+			this.scene.start('Scene_0');
+			
+		}
 	}
 
 	update(){
 		if (this.player.x < 2000) {
 			this.player.setSize(50, 174, true);
-			this.player.setVelocityX(300);
+			
 			this.player.anims.play('right', true);
 		}
 			
@@ -204,8 +270,8 @@ class Scene1 extends Phaser.Scene{
 
 			    
 			}
-
-
+			
+	
 
 	}
 }
