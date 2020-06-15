@@ -251,7 +251,7 @@ class Scene1 extends Phaser.Scene{
 			    this.player.setSize(110, 52, true);
 			    this.player.direction = 'right';
 			    this.player.y=1210;
-
+	  	//vie
 			    this.time.addEvent({
 	                delay: 800,
 	                callback: function() {
