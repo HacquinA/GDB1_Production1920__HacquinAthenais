@@ -20,7 +20,8 @@ class Scene0 extends Phaser.Scene{
 		//clique souris 
 
 			this.input.on('pointerdown', function (pointer){
-				this.scene.start('Narration_1', {vie:this.vie});
+
+				this.scene.start('Scene_3', {vie:this.vie});
 
 			}, this);
 		
