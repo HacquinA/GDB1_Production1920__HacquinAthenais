@@ -20,6 +20,8 @@ class Scene3 extends Phaser.Scene{
 		this.load.image('objet3','Assets/objet3.png');
 		this.load.image('vie','Assets/Mayu.png');
 		this.load.image('base0','Assets/base0.png');
+		this.load.image('Hiyor','Assets/hiyori_borne.png');
+		this.load.image('may','Assets/mayu_borne.png');
 		this.load.image('timebar','Assets/timebar.png');
 
 
@@ -27,6 +29,9 @@ class Scene3 extends Phaser.Scene{
 
 	create(){
 		this.add.image(360,640,'borne').setScale(0.31);
+		this.add.image(100,1150,'may').setScale(0.4);
+		this.add.image(650,1150,'Hiyor').setScale(0.4);
+
 
 		this.base0 = this.physics.add.staticImage(605,845,'base0');
 
