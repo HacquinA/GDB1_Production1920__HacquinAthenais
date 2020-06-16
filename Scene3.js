@@ -71,7 +71,7 @@ class Scene3 extends Phaser.Scene{
 
 	// Objet 3
 		
-		this.objet3 = this.physics.add.sprite(390,500,'objet3').setGravityY(-600).setScale(0.6).setInteractive().setVisible(false);
+		this.objet3 = this.physics.add.sprite(390,520,'objet3').setGravityY(-600).setScale(0.6).setInteractive().setVisible(false);
 		this.physics.add.collider(this.objet3,this.base3);
 
 	// base 4
@@ -140,12 +140,13 @@ class Scene3 extends Phaser.Scene{
 			this.objet3.destroy(true);
 
 
-			this.text = this.add.text(50, 1000, "Bien joué tu as réussi à \naider remporté le duel \ncontre Hiyori !", {'font': '30px', fill: '#fff'}).setScrollFactor(0);
+			this.gameTimer.paused = true;
+			this.text = this.add.text(50, 1000, "Bien joué tu as réussi à \naider remporté le duel \ncontre Hiyori !", {'font': '30px', fill: '#000'}).setScrollFactor(0);
 
 			this.timedEvent = this.time.delayedCall(5000, changeLevel, [], this);
 
 			function changeLevel(){
-				this.scene.start('Scene_0',{vie:this.vie});
+				this.scene.start('Narration_4',{vie:this.vie});
 			}
 			
 		}

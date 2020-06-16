@@ -194,7 +194,7 @@ class Scene1 extends Phaser.Scene{
 
 
 		function maFonction(){
-			this.scene.start('Scene_2');
+			this.scene.start('Narration_2');
 			
 		}
 	
