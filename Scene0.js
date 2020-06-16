@@ -23,9 +23,6 @@ class Scene0 extends Phaser.Scene{
 
 				this.scene.start('Scene_3', {vie:this.vie});
 
-				this.scene.start('Narration_3', {vie:this.vie});
-
-
 			}, this);
 		
 	}
