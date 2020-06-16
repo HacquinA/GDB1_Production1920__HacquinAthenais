@@ -176,7 +176,7 @@ class Scene2 extends Phaser.Scene{
 			this.timedEvent = this.time.delayedCall(5000, changeLevel, [], this);
 
 			function changeLevel(){
-				this.scene.start('Scene_3',{vie:this.vie});
+				this.scene.start('Narration_3',{vie:this.vie});
 			}
 
 	
