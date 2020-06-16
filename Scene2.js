@@ -9,7 +9,7 @@ class Scene2 extends Phaser.Scene{
 
 	preload(){
 		this.load.image('back','Assets/CombatDecor.png');
-		this.load.spritesheet('chise','Assets/Chise_attaque.png',{frameWidth: 220, frameHeight: 298});
+		this.load.spritesheet('chise','Assets/Chise_attaque.png',{frameWidth: 219, frameHeight: 298});
 		this.load.image('kumabo_ame','Assets/kumabo_ame.png');
 		this.load.image('kumabo_attaque','Assets/kumabo_attaque.png');
 		this.load.image('kumabo_rit','Assets/kumabo_rit.png');
@@ -72,7 +72,7 @@ class Scene2 extends Phaser.Scene{
 			this.kumaboS = this.physics.add.staticImage(605,605,'kumabo_surpris').setGravity(-600).setInteractive().setVisible(false);
 			this.kumaboA = this.physics.add.staticImage(510,670,'kumabo_ame').setGravity(-600).setInteractive().setVisible(false).setScale(0.7);
 
-			this.bouclier = this.add.image(450,600,'bouclier').setScale(4).setAlpha(0.7);
+			this.bouclier = this.add.image(450,593,'bouclier').setScale(4).setAlpha(0.7);
 
 			this.kumabo.on('pointerdown', function (pointer){
 				this.nbClick ++;

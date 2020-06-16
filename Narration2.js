@@ -35,7 +35,7 @@ class Narration2 extends Phaser.Scene{
 				}
 				if (this.nbClick==2){
 					this.text1.setVisible(false);
-					this.text2 = this.add.text(20, 100, "Je te présente chisE,\nune des plus proche amies de Mayu", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
+					this.text2 = this.add.text(20, 100, "Je te présente chise,\nune des plus proche amies de Mayu", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
 					this.text3 = this.add.text(20, 300, "Elles sont inséparables !\nchisE aime le danger et l'aventure \nmais aussi et surtout les combats.", {'font': '30px', fill: '#fff'}).setScrollFactor(0);
 					this.chisE = this.add.image(370,900,'chisE').setScale(0.5);
 
@@ -43,14 +43,14 @@ class Narration2 extends Phaser.Scene{
 				if (this.nbClick == 3){
 					this.text2.setVisible(false);
 					this.text3.setVisible(false);
-					this.text4 = this.add.text(20, 100, "C'est pourquoi un jour chisE\nà voulus emmener Mayu combattres\nkumabos avec elle. Elle voulait\nlui montrerce que l'on peut\nressentir grâce à l'action.", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
+					this.text4 = this.add.text(20, 100, "C'est pourquoi un jour chise\nà voulus emmener Mayu combattres\nkumabos avec elle. Elle voulait\nlui montrerce que l'on peut\nressentir grâce à l'action.", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
 					this.chisE.setVisible(false);
 								
 
 				}
 				if (this.nbClick == 4){
 					this.text4.setVisible(false);
-					this.text5 = this.add.text(20, 85, "Te voila donc face à un Kumabo,\naide chisE à le vaincre !\nIl te suffit de cliquer dessus à l'aide\nde la souris pour le destabiliser\net qu'il lève son bouclier !", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
+					this.text5 = this.add.text(20, 85, "Te voila donc face à un Kumabo,\naide chise à le vaincre !\nIl te suffit de cliquer dessus à\nl'aidede la souris pour le\ndestabiliser et qu'il lève son\nbouclier !", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
 					this.text6 = this.add.text(20, 300, "Allez c'est partis ! CLIQUE ! ", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
 					this.kumabo = this.add.image(370,800,'kumabo').setScale(2);
 				}

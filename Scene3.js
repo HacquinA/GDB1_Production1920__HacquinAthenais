@@ -146,7 +146,7 @@ class Scene3 extends Phaser.Scene{
 
 
 			this.gameTimer.paused = true;
-			this.text = this.add.text(50, 1000, "Bien joué tu as réussi à \naider remporté le duel \ncontre Hiyori !", {'font': '30px', fill: '#000'}).setScrollFactor(0);
+			this.text = this.add.text(150, 500, "Bien joué tu as réussi à \naider remporté le duel \ncontre Hiyori !", {'font': '30px', fill: '#000'}).setScrollFactor(0);
 
 			this.timedEvent = this.time.delayedCall(5000, changeLevel, [], this);
 
