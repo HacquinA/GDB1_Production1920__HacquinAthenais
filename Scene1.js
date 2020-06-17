@@ -19,6 +19,7 @@ class Scene1 extends Phaser.Scene{
 		this.load.image('vie','Assets/Mayu.png');
 		this.load.image('timebar','Assets/timebar.png');
 		this.load.image('gameover','Assets/gameover.png');
+		this.load.image('collid','Assets/collid.png');
 
 
 
@@ -72,12 +73,16 @@ class Scene1 extends Phaser.Scene{
 	//Saiya
 
 
-		this.Saiya = this.physics.add.sprite(4500,500,'Saiya');
+		this.Saiya = this.physics.add.sprite(4800,500,'Saiya').setScale(1.5);
 		this.physics.add.collider(this.Saiya,this.route);
 		this.physics.add.overlap(this.Saiya,this.player);
 
 
 	// obstacles 
+		
+
+		this.collid = this.physics.add.sprite(2300,1000,'collid');
+		this.physics.add.collider(this.collid,this.player);
 
 		this.obstacles = this.physics.add.staticGroup(); 
 	        //this.obstacles.create(600,1200,'lanterne_petite');

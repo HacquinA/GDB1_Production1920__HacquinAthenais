@@ -37,7 +37,7 @@ class Narration1 extends Phaser.Scene{
 					this.chambre.setVisible(false);
 					this.text.setVisible(false);
 					this.reveil1.setVisible(true);
-					this.text1 = this.add.text(20, 100, " Il arrive que sa passion\n pour son lit lui poses quelques \n soucis..", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
+					this.text1 = this.add.text(20, 100, " Il arrive que sa passion\n pour son lit lui pose quelques \n soucis..", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
 				
 				}
 				if (this.nbClick==2){
@@ -54,7 +54,7 @@ class Narration1 extends Phaser.Scene{
 					this.text3.setVisible(false);
 					this.text4 = this.add.text(20, 85, "Mayu est agile! Tu peux sauter\n(flèche du haut), double sauter\n(double clique flèche du haut)et\nmême glisser(flèche du bas)\nmais pas à l'infinis attention!", {'font': '30px', fill: '#fff'}).setScrollFactor(0);
 					this.text5 = this.add.text(105, 1010, "Allez c'est partis !\n", {'font': '35px', fill: '#fff'}).setScrollFactor(0);
-					this.text6 = this.add.text(105, 1100, "(pour chaque mini-jeu tu peux\nrecommencer autant que tu veux\ntemps que cela reste dans le\ntemps imparti(barre rouge en haut\nde l'ecran) à la fin du timer\ntu perdras une vie, ainsi de suite\njusqu'a ce que tu n'est plus de vie)", {'font': '20px', fill: '#fff'}).setScrollFactor(0);
+					this.text6 = this.add.text(105, 1100, "(pour chaque mini-jeu tu peux\nrecommencer autant que tu veux\ntemps que cela reste dans le\ntemps imparti(barre rouge en haut\nde l'ecran) à la fin du timer\ntu perdras une vie, ainsi de suite\njusqu'a ce que tu n'ai plus de vie)", {'font': '20px', fill: '#fff'}).setScrollFactor(0);
 
 				}
 				if (this.nbClick == 5){
