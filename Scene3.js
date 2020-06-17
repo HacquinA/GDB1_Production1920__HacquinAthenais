@@ -29,8 +29,7 @@ class Scene3 extends Phaser.Scene{
 
 	create(){
 		this.add.image(360,640,'borne').setScale(0.31);
-		this.add.image(100,1150,'may').setScale(0.4);
-		this.add.image(650,1150,'Hiyor').setScale(0.4);
+		
 
 
 		this.base0 = this.physics.add.staticImage(605,845,'base0');
@@ -225,7 +224,8 @@ class Scene3 extends Phaser.Scene{
 	            });
 	            this.gameTimer.paused = false;
 
-	
+		this.add.image(100,1150,'may').setScale(0.4);
+		this.add.image(650,1150,'Hiyor').setScale(0.4);
 	}
 
 	update(){

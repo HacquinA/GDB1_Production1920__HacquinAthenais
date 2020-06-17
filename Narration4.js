@@ -49,20 +49,20 @@ class Narration4 extends Phaser.Scene{
 
 				if (this.nbClick == 4){
 					this.text3.setVisible(false);
-					this.text4 = this.add.text(30, 400, "Mayu est en réalité atteinte\nd'une maladie qui l'a\nplongé dans le comas.", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
+					this.text4 = this.add.text(30, 400, "Mayu est en réalité atteinte\nd'une maladie qui l'a\nplongée dans le comas.", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
 
 					this.may1 = this.add.image(370,900,'mayu_fenetre');
 				}
 				if (this.nbClick == 5){
 					this.text4.setVisible(false);
 					this.text5 = this.add.text(30, 200, "Toi tu étais dans sa tête,\nses souvenirs plus précisement.", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
-					this.text6 = this.add.text(30, 400, "Tu as réussi à refaire ses\nsouvenirs à la perfection\net grâce a toi..", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
+					this.text6 = this.add.text(30, 400, "Tu as réussi à refaire ses\nsouvenirs à la perfection\net grâce a toi", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
 
 				}
 				if (this.nbClick == 6){
 					this.text5.setVisible(false);
 					this.text6.setVisible(false);
-					this.text7 = this.add.text(30, 200, "Elle a enfin ouvert les yeux.\nGrâce aux souvenirs de ses\namis elle s'est enfin réveillé,\ngrâce à toi.", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
+					this.text7 = this.add.text(30, 200, "elle a enfin ouvert les yeux.\nGrâce aux souvenirs de ses\namis elle s'est enfin réveillée,\ngrâce à toi.", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
 					//this.text8 = this.add.text(30, 400, "Tu as réussi à refaire ses\nsouvenirs à la perfection\net grâce a toi..", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
 					this.may2 = this.add.image(370,900,'mayu_top');
 					this.may1.setVisible(false);
@@ -70,7 +70,7 @@ class Narration4 extends Phaser.Scene{
 				if (this.nbClick == 7){
 					this.text7.setVisible(false);
 					this.text8 = this.add.text(30, 200, "Je n'imagine pas\nce qui ce serait passer\nsi tu avais échoué..", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
-					//this.text8 = this.add.text(30, 400, "Tu as réussi à refaire ses\nsouvenirs à la perfection\net grâce a toi..", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
+					//this.text8 = this.add.text(30, 400, "Tu as réussi à refaire ses\nsouvenirs à la perfection\net gsrâce a toi..", {'font': '35px', fill: '#fff'}).setScrollFactor(0);						
 					
 				}
 				if (this.nbClick == 8){
